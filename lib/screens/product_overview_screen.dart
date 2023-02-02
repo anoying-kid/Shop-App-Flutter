@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/providers/cart.dart';
 import 'package:shop_app/providers/products.dart';
-import 'package:shop_app/widget/badges.dart';
+import 'package:shop_app/screens/cart_screen.dart';
+import 'package:shop_app/widget/badgeds.dart';
 
 import '../widget/products_grid.dart';
 
@@ -25,6 +26,8 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
     final productsContainer = Provider.of<Products>(context);
     return Scaffold(
         appBar: AppBar(
+          // foregroundColor: Theme.of(context).colorScheme.secondary,
+          // backgroundColor: Theme.of(context).colorScheme.secondary,
           title: const Text('MyShop'),
           actions: [
             PopupMenuButton(
@@ -52,8 +55,14 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               icon: Icon(Icons.more_vert),
             ),
             Consumer<Cart>(
-              builder: (_, cart, ch) => Badgeds(value: cart.itemCount.toString(), child: ch!),
-              child: IconButton(icon: Icon(Icons.shopping_cart), onPressed: () { },),
+              builder: (_, cart, ch) =>
+                  Badgeds(value: cart.itemCount.toString(), child: ch!),
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                },
+              ),
             ),
           ],
         ),
