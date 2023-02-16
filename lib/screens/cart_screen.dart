@@ -18,15 +18,19 @@ class CartScreen extends StatelessWidget {
           margin: EdgeInsets.all(15),
           child: Padding(
             padding: EdgeInsets.all(8),
-            child: Row(children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             children: [
               Text(
                 'Total',
                 style: TextStyle(fontSize: 20),
               ),
+              SizedBox(width: 20,),
               Chip(
                 label: Text('\$${cart.totalAmount}', style: TextStyle(color: Theme.of(context).primaryTextTheme.titleLarge?.color),),
                 backgroundColor: Theme.of(context).primaryColor,
               ),
+              SizedBox(width: 10,),
+              TextButton(onPressed: (){}, child: Text('ORDER NOW')),
             ]),
           ),
         )
